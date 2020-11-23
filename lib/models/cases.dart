@@ -7,7 +7,7 @@ class Cases {
   final String city;
   final String country;
   final String status;
-  final String updates;
+  final String updated;
 
   Cases(
       {this.id,
@@ -18,7 +18,7 @@ class Cases {
       this.city,
       this.country,
       this.status,
-      this.updates});
+      this.updated});
 
   factory Cases.fromJson(Map<String, dynamic> json) {
     return Cases(
@@ -30,7 +30,7 @@ class Cases {
       city: json['city'] as String,
       country: json['country'] as String,
       status: json['status'] as String,
-      updates: json['updates'] as String,
+      updated: json['updated'] as String,
     );
   }
 

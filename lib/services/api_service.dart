@@ -29,4 +29,64 @@ class ApiService {
       throw "Error en el Caso";
     }
   }
+
+  Future<Cases> deleteCase(String id) async {
+    Response res = await delete('$apiUrl/$id');
+
+    if (res.statusCode == 200) {
+      print("Eliminado");
+    } else {
+      throw "Error en el Caso";
+    }
+  }
+
+  Future<Cases> createCase(Cases cases) async {
+    Map data = {
+      'name': cases.name,
+      'gender': cases.gender,
+      'age': cases.age,
+      'address': cases.address,
+      'country': cases.country,
+      'city': cases.city,
+      'status': cases.status
+    };
+
+    final Response response = await post(
+      apiUrl,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(data),
+    );
+    if (response.statusCode == 200) {
+      return Cases.fromJson(json.decode(response.body));
+    } else {
+      throw "Error en el Caso";
+    }
+  }
+
+  Future<Cases> updateCase(String id, Cases cases) async {
+    Map data = {
+      'name': cases.name,
+      'gender': cases.gender,
+      'age': cases.age,
+      'address': cases.address,
+      'country': cases.country,
+      'city': cases.city,
+      'status': cases.status
+    };
+
+    final Response response = await put(
+      '$apiUrl/$id',
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(data),
+    );
+    if (response.statusCode == 200) {
+      return Cases.fromJson(json.decode(response.body));
+    } else {
+      throw "Error en el Caso";
+    }
+  }
 }

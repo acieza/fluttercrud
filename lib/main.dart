@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercrud/models/cases.dart';
+import 'package:fluttercrud/pages/adddatawidget.dart';
 import 'package:fluttercrud/pages/caseslist.dart';
 import 'package:fluttercrud/services/api_service.dart';
 
@@ -60,7 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddDataWidget()));
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

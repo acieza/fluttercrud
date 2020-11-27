@@ -22,7 +22,14 @@ class CasesList extends StatelessWidget {
           child: ListTile(
             leading: Icon(Icons.person),
             title: Text(cases[index].name),
-            subtitle: Text(cases[index].age.toString()),
+            subtitle: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: LinearProgressIndicator(
+                value: cases[index].age.toDouble() / 100,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.black38),
+                backgroundColor: Colors.grey.withOpacity(0.3),
+              ),
+            ),
           ),
         ));
       },
